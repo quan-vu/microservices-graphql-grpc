@@ -12,6 +12,11 @@ const typeDefs = apollo_server_1.gql `
     inStock: Int!
   }
 
+  type ProductPaginationResponse {
+    totalCount: Int!
+    products: [Product]
+  }
+
   type OrderDetail {
     id: ID!
     product: Product!
@@ -25,6 +30,7 @@ const typeDefs = apollo_server_1.gql `
   }
 
   type Query {
+    productsPagination(first: Int, offset: Int): ProductPaginationResponse
     products: [Product]
     product(id: ID!): Product
     order(id: ID!): Order
@@ -56,4 +62,4 @@ const typeDefs = apollo_server_1.gql `
   }
 `;
 exports.typeDefs = typeDefs;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2NoZW1hLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vc3JjL3NjaGVtYS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFvQztBQUVwQyxNQUFNLFFBQVEsR0FBRyxtQkFBRyxDQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztDQXFEbkIsQ0FBQztBQUVPLDRCQUFRIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2NoZW1hLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vc3JjL3NjaGVtYS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFvQztBQUVwQyxNQUFNLFFBQVEsR0FBRyxtQkFBRyxDQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztDQTJEbkIsQ0FBQztBQUVPLDRCQUFRIn0=

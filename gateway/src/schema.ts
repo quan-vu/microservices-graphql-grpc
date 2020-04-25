@@ -11,6 +11,11 @@ const typeDefs = gql`
     inStock: Int!
   }
 
+  type ProductPaginationResponse {
+    totalCount: Int!
+    products: [Product]
+  }
+
   type OrderDetail {
     id: ID!
     product: Product!
@@ -24,6 +29,7 @@ const typeDefs = gql`
   }
 
   type Query {
+    productsPagination(first: Int, offset: Int): ProductPaginationResponse
     products: [Product]
     product(id: ID!): Product
     order(id: ID!): Order

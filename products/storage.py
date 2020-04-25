@@ -1,5 +1,6 @@
 from base import Session
 from models import Product
+from sqlalchemy import func
 
 class Storage():
 
@@ -27,9 +28,16 @@ class Storage():
         if product:
             return product.to_dict()
 
-    def get_all(self):
-        result = []
-        products = self.session.query(Product).all()
+    def get_all(self, limit, offset):
+        result = []        
+        limit = limit if limit else 0
+        offset = offset if offset else 0
+
+        if limit:
+            products = self.session.query(Product).limit(limit).offset(offset)
+        else:
+            products = self.session.query(Product).all()
+
         self.session.close()
         for item in products:
             result.append({
@@ -42,3 +50,8 @@ class Storage():
                 "in_stock": item.in_stock,
             })
         return result
+
+    def count_total(self):
+        total_count = self.session.query(func.count(Product.id)).scalar()
+        self.session.close()
+        return total_count

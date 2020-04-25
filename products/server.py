@@ -6,7 +6,7 @@ import logging
 
 import grpc
 
-from products_pb2 import Product, Products
+from products_pb2 import ProductResponse, ProductsResponse
 from products_pb2_grpc import productsStub, productsServicer, add_productsServicer_to_server
 
 from storage import Storage
@@ -25,16 +25,22 @@ class ProductService(productsServicer):
             "in_stock": request.in_stock,
         }
         new_product = self.storage.create(product=product)
-        return Product(**new_product)
+        return ProductResponse(**new_product)
 
     def get_product(self, request, context):
         product_id = request.id
         product = self.storage.get(product_id)
-        return Product(**product)
+        return ProductResponse(**product)
 
     def list_products(self, request, context):
-        products = self.storage.get_all()
-        return Products(products=[{**product} for product in products])
+        limit = request.first
+        offset = request.offset
+        totalCount = self.storage.count_total()
+        products = self.storage.get_all(limit=limit, offset=offset)        
+        return ProductsResponse(
+            products=[{**product} for product in products], 
+            totalCount=totalCount
+        )
     
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

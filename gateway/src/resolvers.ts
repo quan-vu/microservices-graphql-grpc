@@ -11,8 +11,15 @@ const resolvers = {
       return response;
     },
     products: async () => {
-      const response = await productsGrpcClient.listProductsAsync({});
+      const response = await productsGrpcClient.listProductsAsync({ });
       return response.products;
+    },
+    productsPagination: async (_, { first, offset }) => {
+      const response = await productsGrpcClient.listProductsAsync({ first, offset });
+      return {
+        totalCount: response.totalCount,
+        products: response.products
+      };
     },
     order: async (_, { id }) => {
       const response = await ordersGrpcClient.getOrderAsync({ id });

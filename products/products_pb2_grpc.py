@@ -15,18 +15,18 @@ class productsStub(object):
         """
         self.get_product = channel.unary_unary(
                 '/products.products/get_product',
-                request_serializer=products__pb2.GetProduct.SerializeToString,
-                response_deserializer=products__pb2.Product.FromString,
+                request_serializer=products__pb2.ProductRequest.SerializeToString,
+                response_deserializer=products__pb2.ProductResponse.FromString,
                 )
         self.create_product = channel.unary_unary(
                 '/products.products/create_product',
-                request_serializer=products__pb2.Product.SerializeToString,
-                response_deserializer=products__pb2.Product.FromString,
+                request_serializer=products__pb2.ProductRequest.SerializeToString,
+                response_deserializer=products__pb2.ProductResponse.FromString,
                 )
         self.list_products = channel.unary_unary(
                 '/products.products/list_products',
-                request_serializer=products__pb2.GetProducts.SerializeToString,
-                response_deserializer=products__pb2.Products.FromString,
+                request_serializer=products__pb2.ProductsRequest.SerializeToString,
+                response_deserializer=products__pb2.ProductsResponse.FromString,
                 )
 
 
@@ -56,18 +56,18 @@ def add_productsServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'get_product': grpc.unary_unary_rpc_method_handler(
                     servicer.get_product,
-                    request_deserializer=products__pb2.GetProduct.FromString,
-                    response_serializer=products__pb2.Product.SerializeToString,
+                    request_deserializer=products__pb2.ProductRequest.FromString,
+                    response_serializer=products__pb2.ProductResponse.SerializeToString,
             ),
             'create_product': grpc.unary_unary_rpc_method_handler(
                     servicer.create_product,
-                    request_deserializer=products__pb2.Product.FromString,
-                    response_serializer=products__pb2.Product.SerializeToString,
+                    request_deserializer=products__pb2.ProductRequest.FromString,
+                    response_serializer=products__pb2.ProductResponse.SerializeToString,
             ),
             'list_products': grpc.unary_unary_rpc_method_handler(
                     servicer.list_products,
-                    request_deserializer=products__pb2.GetProducts.FromString,
-                    response_serializer=products__pb2.Products.SerializeToString,
+                    request_deserializer=products__pb2.ProductsRequest.FromString,
+                    response_serializer=products__pb2.ProductsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -90,8 +90,8 @@ class products(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/products.products/get_product',
-            products__pb2.GetProduct.SerializeToString,
-            products__pb2.Product.FromString,
+            products__pb2.ProductRequest.SerializeToString,
+            products__pb2.ProductResponse.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -106,8 +106,8 @@ class products(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/products.products/create_product',
-            products__pb2.Product.SerializeToString,
-            products__pb2.Product.FromString,
+            products__pb2.ProductRequest.SerializeToString,
+            products__pb2.ProductResponse.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -122,7 +122,7 @@ class products(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/products.products/list_products',
-            products__pb2.GetProducts.SerializeToString,
-            products__pb2.Products.FromString,
+            products__pb2.ProductsRequest.SerializeToString,
+            products__pb2.ProductsResponse.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
