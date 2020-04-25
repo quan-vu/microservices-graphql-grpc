@@ -31,7 +31,6 @@ const typeDefs = gql`
   }
 
   input ProductInput {
-    id: ID!
     name: String
     slug: String!
     thumbnail: String!

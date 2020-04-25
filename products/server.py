@@ -15,6 +15,18 @@ class ProductService(productsServicer):
 
     storage = Storage()
 
+    def create_product(self, request, context):
+        product = {
+            "name": request.name,
+            "slug": request.slug,
+            "thumbnail": request.thumbnail,
+            "description": request.description,
+            "price": request.price,
+            "in_stock": request.in_stock,
+        }
+        new_product = self.storage.create(product=product)
+        return Product(**new_product)
+
     def get_product(self, request, context):
         product_id = request.id
         product = self.storage.get(product_id)

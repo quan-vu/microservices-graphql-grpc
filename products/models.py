@@ -1,9 +1,5 @@
 import datetime
-
-from sqlalchemy import create_engine
 from sqlalchemy import DECIMAL, Column, DateTime, ForeignKey, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
 from base import Base
 
 
