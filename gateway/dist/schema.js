@@ -17,7 +17,7 @@ const typeDefs = apollo_server_1.gql `
     products: [Product]
   }
 
-  type OrderDetail {
+  type OrderItem {
     id: ID!
     product: Product!
     price: String!
@@ -26,7 +26,7 @@ const typeDefs = apollo_server_1.gql `
 
   type Order {
     id: ID!
-    orderDetails: [OrderDetail]!
+    orderItems: [OrderItem]!
   }
 
   type Query {
@@ -46,14 +46,14 @@ const typeDefs = apollo_server_1.gql `
     inStock: Int
   }
 
-  input OrderDetailsInput {
-    productId: String!
-    price: String!
+  input OrderItemsInput {
+    productId: Int!
+    price: Int!
     quantity: Int!
   }
 
   input OrderInput {
-    orderDetails: [OrderDetailsInput]!
+    orderItems: [OrderItemsInput]!
   }
 
   type Mutation {

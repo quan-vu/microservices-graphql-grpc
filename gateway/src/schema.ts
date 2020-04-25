@@ -16,16 +16,16 @@ const typeDefs = gql`
     products: [Product]
   }
 
-  type OrderDetail {
+  type OrderItem {
     id: ID!
     product: Product!
-    price: String!
+    price: Int!
     quantity: Int!
   }
 
   type Order {
     id: ID!
-    orderDetails: [OrderDetail]!
+    orderItems: [OrderItem]!
   }
 
   type Query {
@@ -45,14 +45,14 @@ const typeDefs = gql`
     inStock: Int
   }
 
-  input OrderDetailsInput {
-    productId: String!
-    price: String!
+  input OrderItemsInput {
+    productId: Int!
+    price: Int!
     quantity: Int!
   }
 
   input OrderInput {
-    orderDetails: [OrderDetailsInput]!
+    orderItems: [OrderItemsInput]!
   }
 
   type Mutation {

@@ -23,10 +23,11 @@ const resolvers = {
     },
     order: async (_, { id }) => {
       const response = await ordersGrpcClient.getOrderAsync({ id });
+      console.log(response)
       return response;
     },
   },
-  OrderDetail: {
+  OrderItem: {
     product: async parent => {
       const response = await productsGrpcClient.getProductAsync({
         id: parent.productId,
