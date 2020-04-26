@@ -48,6 +48,12 @@ const resolvers = {
       });
       return response;
     },
+    updateOrder: async (_, { input }) => {
+      const response = await ordersGrpcClient.updateOrderAsync({
+        ...input,
+      });
+      return response;
+    },
   },
 };
 

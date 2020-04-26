@@ -28,6 +28,10 @@ const typeDefs = gql`
     orderItems: [OrderItem]!
   }
 
+  type OrderDeleteResponse {
+    deleted: Boolean!
+  }
+
   type Query {
     productsPagination(first: Int, offset: Int): ProductPaginationResponse
     products: [Product]
@@ -51,13 +55,32 @@ const typeDefs = gql`
     quantity: Int!
   }
 
+  input OrderItemsUpdateInput {
+    id: Int
+    productId: Int!
+    price: Int!
+    quantity: Int!
+  }
+
   input OrderInput {
     orderItems: [OrderItemsInput]!
   }
 
+  input OrderUpdateInput {
+    id: ID!
+    orderItems: [OrderItemsUpdateInput]!
+  }
+
+  input OrderDeleteInput {
+    id: ID!
+  }
+
+
   type Mutation {
     createProduct(input: ProductInput!): Product!
     createOrder(input: OrderInput!): Order!
+    updateOrder(input: OrderUpdateInput!): Order!
+    deleteOrder(input: OrderDeleteInput): OrderDeleteResponse!
   }
 `;
 

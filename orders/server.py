@@ -26,6 +26,12 @@ class OrderService(ordersServicer):
         order = self.storage.get(order_id)
         return OrderResponse(**order)
 
+    def update_order(self, request, context):
+        order_id = request.id
+        order_items = request.order_items
+        order = self.storage.update(order_id, order_items)
+        return OrderResponse(**order)
+
     
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

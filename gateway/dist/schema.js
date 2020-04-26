@@ -20,13 +20,17 @@ const typeDefs = apollo_server_1.gql `
   type OrderItem {
     id: ID!
     product: Product!
-    price: String!
+    price: Int!
     quantity: Int!
   }
 
   type Order {
     id: ID!
     orderItems: [OrderItem]!
+  }
+
+  type OrderDeleteResponse {
+    deleted: Boolean!
   }
 
   type Query {
@@ -52,14 +56,33 @@ const typeDefs = apollo_server_1.gql `
     quantity: Int!
   }
 
+  input OrderItemsUpdateInput {
+    id: Int
+    productId: Int!
+    price: Int!
+    quantity: Int!
+  }
+
   input OrderInput {
     orderItems: [OrderItemsInput]!
   }
 
+  input OrderUpdateInput {
+    id: ID!
+    orderItems: [OrderItemsUpdateInput]!
+  }
+
+  input OrderDeleteInput {
+    id: ID!
+  }
+
+
   type Mutation {
     createProduct(input: ProductInput!): Product!
     createOrder(input: OrderInput!): Order!
+    updateOrder(input: OrderUpdateInput!): Order!
+    deleteOrder(input: OrderDeleteInput): OrderDeleteResponse!
   }
 `;
 exports.typeDefs = typeDefs;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2NoZW1hLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vc3JjL3NjaGVtYS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFvQztBQUVwQyxNQUFNLFFBQVEsR0FBRyxtQkFBRyxDQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztDQTJEbkIsQ0FBQztBQUVPLDRCQUFRIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2NoZW1hLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vc3JjL3NjaGVtYS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFvQztBQUVwQyxNQUFNLFFBQVEsR0FBRyxtQkFBRyxDQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0NBa0ZuQixDQUFDO0FBRU8sNEJBQVEifQ==
