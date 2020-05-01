@@ -32,6 +32,14 @@ class OrderService(ordersServicer):
         order = self.storage.update(order_id, order_items)
         return OrderResponse(**order)
 
+    def delete_order(self, request, context):
+        order_id = request.id
+        try:
+            dict_deleted = self.storage.delete(order_id)
+            return OrderDeletedResponse(**dict_deleted)
+        except Exception as ex:
+            raise ex
+
     
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

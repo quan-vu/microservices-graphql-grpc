@@ -31,6 +31,7 @@ const typeDefs = apollo_server_1.gql `
 
   type OrderDeleteResponse {
     deleted: Boolean!
+    message: String!
   }
 
   type Query {
@@ -81,8 +82,8 @@ const typeDefs = apollo_server_1.gql `
     createProduct(input: ProductInput!): Product!
     createOrder(input: OrderInput!): Order!
     updateOrder(input: OrderUpdateInput!): Order!
-    deleteOrder(input: OrderDeleteInput): OrderDeleteResponse!
+    deleteOrder(input: OrderDeleteInput): OrderDeleteResponse
   }
 `;
 exports.typeDefs = typeDefs;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2NoZW1hLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vc3JjL3NjaGVtYS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFvQztBQUVwQyxNQUFNLFFBQVEsR0FBRyxtQkFBRyxDQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0NBa0ZuQixDQUFDO0FBRU8sNEJBQVEifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2NoZW1hLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vc3JjL3NjaGVtYS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFvQztBQUVwQyxNQUFNLFFBQVEsR0FBRyxtQkFBRyxDQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztDQW1GbkIsQ0FBQztBQUVPLDRCQUFRIn0=

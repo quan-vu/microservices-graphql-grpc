@@ -54,6 +54,13 @@ const resolvers = {
       });
       return response;
     },
+    deleteOrder: async (_, { input }) => {
+      const response = await ordersGrpcClient.deleteOrderAsync({
+        ...input,
+      });
+      console.log(response);
+      return response;
+    },
   },
 };
 

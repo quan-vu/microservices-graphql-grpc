@@ -8,7 +8,7 @@ class Order(Base):
     __tablename__ = "order"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    order_items = relationship("OrderItem", lazy='joined')
+    order_items = relationship("OrderItem", lazy='joined', cascade="all, delete")
 
     def to_dict(self):
         return {

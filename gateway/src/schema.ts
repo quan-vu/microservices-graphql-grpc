@@ -30,6 +30,7 @@ const typeDefs = gql`
 
   type OrderDeleteResponse {
     deleted: Boolean!
+    message: String!
   }
 
   type Query {
@@ -80,7 +81,7 @@ const typeDefs = gql`
     createProduct(input: ProductInput!): Product!
     createOrder(input: OrderInput!): Order!
     updateOrder(input: OrderUpdateInput!): Order!
-    deleteOrder(input: OrderDeleteInput): OrderDeleteResponse!
+    deleteOrder(input: OrderDeleteInput): OrderDeleteResponse
   }
 `;
 

@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='orders',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\x0corders.proto\x12\x06orders\"T\n\x11OrderItemResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\nproduct_id\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\t\x12\x10\n\x08quantity\x18\x04 \x01(\x05\"K\n\rOrderResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12.\n\x0border_items\x18\x02 \x03(\x0b\x32\x19.orders.OrderItemResponse\"\x1d\n\x0fGetOrderRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"M\n\x16\x43reateOrderItemRequest\x12\x12\n\nproduct_id\x18\x01 \x01(\t\x12\r\n\x05price\x18\x02 \x01(\t\x12\x10\n\x08quantity\x18\x03 \x01(\x05\"I\n\x12\x43reateOrderRequest\x12\x33\n\x0border_items\x18\x01 \x03(\x0b\x32\x1e.orders.CreateOrderItemRequest\"Y\n\x16UpdateOrderItemRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\nproduct_id\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\t\x12\x10\n\x08quantity\x18\x04 \x01(\x05\"U\n\x12UpdateOrderRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x33\n\x0border_items\x18\x02 \x03(\x0b\x32\x1e.orders.UpdateOrderItemRequest\" \n\x12\x44\x65leteOrderRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"\x16\n\x14OrderDeletedResponse2\x95\x02\n\x06orders\x12;\n\tget_order\x12\x17.orders.GetOrderRequest\x1a\x15.orders.OrderResponse\x12\x41\n\x0c\x63reate_order\x12\x1a.orders.CreateOrderRequest\x1a\x15.orders.OrderResponse\x12\x41\n\x0cupdate_order\x12\x1a.orders.UpdateOrderRequest\x1a\x15.orders.OrderResponse\x12H\n\x0c\x64\x65lete_order\x12\x1a.orders.DeleteOrderRequest\x1a\x1c.orders.OrderDeletedResponseb\x06proto3'
+  serialized_pb=b'\n\x0corders.proto\x12\x06orders\"T\n\x11OrderItemResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\nproduct_id\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\t\x12\x10\n\x08quantity\x18\x04 \x01(\x05\"K\n\rOrderResponse\x12\n\n\x02id\x18\x01 \x01(\x05\x12.\n\x0border_items\x18\x02 \x03(\x0b\x32\x19.orders.OrderItemResponse\"\x1d\n\x0fGetOrderRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"M\n\x16\x43reateOrderItemRequest\x12\x12\n\nproduct_id\x18\x01 \x01(\t\x12\r\n\x05price\x18\x02 \x01(\t\x12\x10\n\x08quantity\x18\x03 \x01(\x05\"I\n\x12\x43reateOrderRequest\x12\x33\n\x0border_items\x18\x01 \x03(\x0b\x32\x1e.orders.CreateOrderItemRequest\"Y\n\x16UpdateOrderItemRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x12\n\nproduct_id\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\t\x12\x10\n\x08quantity\x18\x04 \x01(\x05\"U\n\x12UpdateOrderRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x33\n\x0border_items\x18\x02 \x03(\x0b\x32\x1e.orders.UpdateOrderItemRequest\" \n\x12\x44\x65leteOrderRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"8\n\x14OrderDeletedResponse\x12\x0f\n\x07\x64\x65leted\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t2\x95\x02\n\x06orders\x12;\n\tget_order\x12\x17.orders.GetOrderRequest\x1a\x15.orders.OrderResponse\x12\x41\n\x0c\x63reate_order\x12\x1a.orders.CreateOrderRequest\x1a\x15.orders.OrderResponse\x12\x41\n\x0cupdate_order\x12\x1a.orders.UpdateOrderRequest\x1a\x15.orders.OrderResponse\x12H\n\x0c\x64\x65lete_order\x12\x1a.orders.DeleteOrderRequest\x1a\x1c.orders.OrderDeletedResponseb\x06proto3'
 )
 
 
@@ -349,6 +349,20 @@ _ORDERDELETEDRESPONSE = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
+    _descriptor.FieldDescriptor(
+      name='deleted', full_name='orders.OrderDeletedResponse.deleted', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='orders.OrderDeletedResponse.message', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -362,7 +376,7 @@ _ORDERDELETEDRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=584,
-  serialized_end=606,
+  serialized_end=640,
 )
 
 _ORDERRESPONSE.fields_by_name['order_items'].message_type = _ORDERITEMRESPONSE
@@ -450,8 +464,8 @@ _ORDERS = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=609,
-  serialized_end=886,
+  serialized_start=643,
+  serialized_end=920,
   methods=[
   _descriptor.MethodDescriptor(
     name='get_order',

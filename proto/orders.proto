@@ -51,4 +51,7 @@ message DeleteOrderRequest {
     int32 id = 1;
 }
 
-message OrderDeletedResponse {}
+message OrderDeletedResponse {
+    bool deleted = 1;
+    string message = 2;
+}

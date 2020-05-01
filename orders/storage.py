@@ -85,6 +85,38 @@ class Storage():
 
         return order.to_dict()
 
+    def delete(self, order_id):
+        order = self.session.query(Order).filter_by(id=order_id).first()
+        result = {
+            "deleted": False,
+            "message": ''
+        }
+
+        if not order:
+            result = {
+                "deleted": False,
+                "message": 'Order not exist!'
+            }
+        else:
+            try:
+                self.session.delete(order)
+                self.session.commit()
+                self.session.close()
+                result = {
+                    "deleted": True,
+                    "message": 'Success to delete order ID: %s' % str(order_id) 
+                }
+            except Exception as ex:
+                print(ex)
+                result = {
+                    "deleted": False,
+                    "message": 'Fail to delete order ID: %s' % str(order_id) 
+                }
+
+        return result
+        
+        
+
     def get(self, order_id):
         order = self.session.query(Order).filter(Order.id == order_id).first()
         self.session.close()
