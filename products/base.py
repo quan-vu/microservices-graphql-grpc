@@ -6,7 +6,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import DECIMAL, Column, DateTime, ForeignKey, Integer, String
 
-DATABASE_URI = 'postgresql://myadmin:mypassword@localhost:5432/products'
+DATABASE_URI = 'postgresql://myadmin:mypassword@localhost:55432/products'
 
 class BaseModel(object):
     created_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)

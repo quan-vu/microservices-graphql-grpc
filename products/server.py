@@ -43,7 +43,7 @@ class ProductService(productsServicer):
         )
     
 def serve():
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=100))
     add_productsServicer_to_server(ProductService(), server)
     server.add_insecure_port('[::]:50051')  # Don't use this in production
     server.start()

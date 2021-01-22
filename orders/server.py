@@ -42,12 +42,12 @@ class OrderService(ordersServicer):
 
     
 def serve():
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=100))
     add_ordersServicer_to_server(OrderService(), server)
     # Don't use insecure_port in production
     server.add_insecure_port('[::]:50052')
     server.start()
-    print('Started product service at: 127.0.1:50052')
+    print('Started order service at: 127.0.1:50052')
     server.wait_for_termination()
 
 
