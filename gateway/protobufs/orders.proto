@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package orders;
+
+service orders {
+    rpc get_order(GetOrderRequest) returns (OrderResponse);
+    rpc create_order(CreateOrderRequest) returns (OrderResponse);
+    rpc update_order(UpdateOrderRequest) returns (OrderResponse);
+    rpc delete_order(DeleteOrderRequest) returns (OrderDeletedResponse);
+}
+
+message OrderItemResponse {
+    int32 id = 1;
+    string product_id = 2;
+    string price = 3;
+    int32 quantity = 4;
+}
+
+message OrderResponse {
+    int32 id = 1;
+    repeated OrderItemResponse order_items = 2;
+}
+
+message GetOrderRequest {
+    int32 id = 1;
+}
+
+message CreateOrderItemRequest {
+    string product_id = 1;
+    string price = 2;
+    int32 quantity = 3;
+}
+
+message CreateOrderRequest {
+    repeated CreateOrderItemRequest order_items = 1;
+}
+
+message UpdateOrderItemRequest {
+    int32 id = 1;
+    string product_id = 2;
+    string price = 3;
+    int32 quantity = 4;
+}
+
+message UpdateOrderRequest {
+    int32 id = 1;
+    repeated UpdateOrderItemRequest order_items = 2;
+}
+
+message DeleteOrderRequest {
+    int32 id = 1;
+}
+
+message OrderDeletedResponse {
+    bool deleted = 1;
+    string message = 2;
+}

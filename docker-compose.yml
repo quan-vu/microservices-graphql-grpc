@@ -12,8 +12,6 @@ services:
        - postgres:/data/postgres
     ports:
       - "55432:5432"
-    networks:
-      - postgres
     restart: unless-stopped
   
   pgadmin:
@@ -26,27 +24,27 @@ services:
        - pgadmin:/root/.pgadmin
     ports:
       - "${PGADMIN_PORT:-5050}:80"
-    networks:
-      - postgres
     restart: unless-stopped
 
   products:
     build: ./products
+    volumes: 
+      - ./products:/service/products/
 
   orders:
     build: ./orders
+    volumes: 
+      - ./orders:/service/orders/
 
   gateway: 
     build: ./gateway
     ports: 
       - 4000:4000
+    # environment: 
+    #   - ORDERS_SERVICE=orders
+    #   - PRODUCTS_SERVICE=products
 
-
-
-networks:
-  postgres:
-    driver: bridge
 
 volumes:
-    postgres:
-    pgadmin:
+  postgres:
+  pgadmin:

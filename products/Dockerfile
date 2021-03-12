@@ -9,4 +9,6 @@ COPY . /service/products/
 WORKDIR /service/products
 RUN pip install -r requirements.txt
 
+EXPOSE 50051
+
 CMD [ "python", "server.py" ]

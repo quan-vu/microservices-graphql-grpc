@@ -2,8 +2,8 @@ import { loadPackageDefinition, credentials } from 'grpc';
 import * as protoLoader from '@grpc/proto-loader';
 import { promisifyAll } from 'bluebird';
 
-const ORDERS_SERVICE = process.env.ORDERS_SERVICE || 'localhost:50052';
-const PRODUCTS_SERVICE = process.env.PRODUCTS_SERVICE || 'localhost:50051';
+const ORDERS_SERVICE = process.env.ORDERS_SERVICE || 'orders:50052';
+const PRODUCTS_SERVICE = process.env.PRODUCTS_SERVICE || 'products:50051';
 
 const ORDERS_PROTO_PATH =
   process.env.ORDERS_PROTO_PATH || `${__dirname}/../../protobufs/orders.proto`;
