@@ -6,9 +6,9 @@ const ORDERS_SERVICE = process.env.ORDERS_SERVICE || 'localhost:50052';
 const PRODUCTS_SERVICE = process.env.PRODUCTS_SERVICE || 'localhost:50051';
 
 const ORDERS_PROTO_PATH =
-  process.env.ORDERS_PROTO_PATH || `${__dirname}/../../proto/orders.proto`;
+  process.env.ORDERS_PROTO_PATH || `${__dirname}/../../protobufs/orders.proto`;
 const PRODUCTS_PROTO_PATH =
-  process.env.PRODUCTS_PROTO_PATH || `${__dirname}/../../proto/products.proto`;
+  process.env.PRODUCTS_PROTO_PATH || `${__dirname}/../../protobufs/products.proto`;
 
 const ordersPackageDefinition = protoLoader.loadSync(ORDERS_PROTO_PATH, {
   keepCase: false,

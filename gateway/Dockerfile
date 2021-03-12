@@ -1,18 +1,13 @@
-FROM node:8.15.0-alpine
+FROM node:12.18.1
+ENV NODE_ENV=production
 
-USER node
+WORKDIR /app/gateway
 
-RUN mkdir -p /home/node/app
+COPY . /app/gateway
 
-WORKDIR /home/node/app
+RUN npm install --production
 
-COPY package.json package.json
-COPY tsconfig.json tsconfig.json
-ADD src src
-ADD proto proto
-
-RUN npm install --production --loglevel=error
-RUN npm run build
+COPY . .
 
 EXPOSE 4000
 
