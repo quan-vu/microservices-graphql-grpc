@@ -1,6 +1,14 @@
 version: '3.5'
 
 services:
+
+  db_center_cassandra: # Use Cassandra for document database
+    image: bitnami/cassandra:latest
+    ports: 
+      - 49042:9042
+    volumes:
+      - ./docker/db_center_cassandra/volumes/dbdata:/bitnami/cassandra/data
+      
   postgres:
     container_name: postgres_container
     image: postgres
@@ -11,7 +19,7 @@ services:
     volumes:
        - postgres:/data/postgres
     ports:
-      - "55432:5432"
+      - "55439:5432"
     restart: unless-stopped
   
   pgadmin:
@@ -30,6 +38,7 @@ services:
     build: ./products
     volumes: 
       - ./products:/service/products/
+    env_file: ./products/.env
 
   orders:
     build: ./orders

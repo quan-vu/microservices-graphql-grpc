@@ -1,14 +1,11 @@
-# syntax = docker/dockerfile:1.0-experimental
-# DOCKER_BUILDKIT=1 docker build . -f products/Dockerfile -t products --secret id=ca.key,src=ca.key
-
-FROM python:3.6
+FROM python:3.6-slim
 
 RUN mkdir /service
-COPY . /service/products/
+COPY . /service
 
-WORKDIR /service/products
+WORKDIR /service
 RUN pip install -r requirements.txt
 
 EXPOSE 50051
 
-CMD [ "python", "server.py" ]
+CMD ["python", "app/server.py" ]

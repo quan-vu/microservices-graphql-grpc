@@ -9,11 +9,12 @@ import grpc
 from products_pb2 import ProductResponse, ProductsResponse
 from products_pb2_grpc import productsStub, productsServicer, add_productsServicer_to_server
 
-from storage import Storage
+from app.db.product_repository import ProductRepository
+
 
 class ProductService(productsServicer):
 
-    storage = Storage()
+    product_repository = ProductRepository()
 
     def create_product(self, request, context):
         product = {
@@ -24,19 +25,19 @@ class ProductService(productsServicer):
             "price": request.price,
             "in_stock": request.in_stock,
         }
-        new_product = self.storage.create(product=product)
+        new_product = self.db.create(product=product)
         return ProductResponse(**new_product)
 
     def get_product(self, request, context):
         product_id = request.id
-        product = self.storage.get(product_id)
+        product = self.db.get(product_id)
         return ProductResponse(**product)
 
     def list_products(self, request, context):
         limit = request.first
         offset = request.offset
-        totalCount = self.storage.count_total()
-        products = self.storage.get_all(limit=limit, offset=offset)        
+        totalCount = self.db.count_total()
+        products = self.db.get_all(limit=limit, offset=offset)        
         return ProductsResponse(
             products=[{**product} for product in products], 
             totalCount=totalCount
