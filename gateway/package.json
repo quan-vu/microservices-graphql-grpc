@@ -35,7 +35,7 @@
     "graphql-voyager": "^1.0.0-rc.26",
     "grpc": "^1.18.0",
     "grpc-tools": "^1.6.6",
-    "log4js": "^4.0.2",
+    "log4js": "^6.4.0",
     "typescript": "^3.3.3"
   }
 }
